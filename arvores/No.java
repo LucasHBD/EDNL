@@ -11,7 +11,7 @@ public class No {
         this.filhoDireito = null;
         this.filhoEsquerdo = null;
 
-        this.setCor("Vermelho");
+        this.setCor("vermelho");
     }
 
     public No getFilhoEsquerdo(){
