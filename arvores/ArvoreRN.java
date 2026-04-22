@@ -1,5 +1,7 @@
 package arvores;
 
+import java.util.Scanner;
+
 public class ArvoreRN {
 
     private No raiz;
@@ -637,39 +639,37 @@ public class ArvoreRN {
 
     public static void main(String[] args) {
         ArvoreRN arvore = new ArvoreRN();
+        Scanner input = new Scanner(System.in);
+        Boolean ativo = true;
 
-        System.out.println("=== INSERÇÃO ===");
+        while(ativo){
+            System.out.println("Escolha uma operação: ");
+            System.out.println("1 - Inserir ");
+            System.out.println("2 - Remover ");
+            System.out.println("3 - Fechar ");
 
-        int[] valores = {10, 20, 30, 15, 5, 1, 25, 40, 50, 60, 2, 8};
+           Integer op = input.nextInt();
+           Integer no = input.nextInt();
+           
+           switch(op){
+            case 1:
+                System.out.println("Valor do nó");
+                arvore.inserir(no);
+                arvore.print();
+                break;
 
-        for (int v : valores) {
-            System.out.println("\nInserindo: " + v);
-            arvore.inserir(v);
-            arvore.print();
+            case 2:
+                System.out.println("Valor do nó");
+                arvore.remover(no);
+                arvore.print();
+                break;
+
+            case 3:
+                ativo = false;
+                input.close();
+                break;
+           }
+
         }
-
-        System.out.println("\n=== BUSCA ===");
-        int buscar = 25;
-        No encontrado = arvore.buscar(arvore.raiz(), buscar);
-
-        if (encontrado != null && encontrado.getElemento() == buscar) {
-            System.out.println("Elemento " + buscar + " encontrado:");
-            arvore.printNo(encontrado);
-        } else {
-            System.out.println("Elemento " + buscar + " não encontrado.");
-        }
-
-        System.out.println("\n=== REMOÇÃO ===");
-
-        int[] remover = {1, 5, 20, 30};
-
-        for (int r : remover) {
-            System.out.println("\nRemovendo: " + r);
-            arvore.remover(r);
-            arvore.print();
-        }
-
-        System.out.println("\n=== ESTADO FINAL ===");
-        arvore.print();
     }
 }
